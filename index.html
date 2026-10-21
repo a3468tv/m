@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Canlı Player</title>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<style>
+  body{margin:0;background:#000;display:flex;justify-content:center;align-items:center;height:100vh}
+  #wrap{position:relative;width:100%;max-width:900px}
+  video{width:100%}
+  #logo{position:absolute;top:10px;left:10px;z-index:10;pointer-events:none;background:rgba(0,0,0,0.7);border-radius:8px;padding:4px 10px}
+  #logo img{height:30px}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <video id="v" controls autoplay></video>
+  <div id="logo"><img src="logo.png"></div>
+</div>
+<script>
+  var src = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"; // buraya kendi m3u8'ini yazacaksın
+  var video = document.getElementById('v');
+  if(Hls.isSupported()){var hls=new Hls();hls.loadSource(src);hls.attachMedia(video);}
+  else{video.src=src;}
+</script>
+</body>
+</html>
